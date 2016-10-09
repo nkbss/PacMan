@@ -9,15 +9,13 @@ import com.badlogic.gdx.math.Vector2;
 public class GameScreen extends ScreenAdapter {
 	 private PacmanGame pacmanGame;
 	 private Texture pacmanImg;
-	 
+	 World world;
 	 private Pacman pacman;
 	 
 	    public GameScreen(PacmanGame pacmanGame) {
 	        this.pacmanGame = pacmanGame;
-	 
 	        pacmanImg = new Texture("pacman.png");
-	 
-	        pacman = new Pacman(100,100);
+	        world = new World(pacmanGame);
 	    }
 	 
 	    private void update(float delta) {
@@ -37,7 +35,6 @@ public class GameScreen extends ScreenAdapter {
 	    
 	    @Override
 	    public void render(float delta) {
-	        //System.out.println("Hello " + delta);
 	    	 Gdx.gl.glClearColor(0, 0, 0, 1);
 	         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	    	SpriteBatch batch = pacmanGame.batch;
