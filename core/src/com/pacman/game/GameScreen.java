@@ -24,7 +24,8 @@ public class GameScreen extends ScreenAdapter {
 	    }
 	 
 	   public void update(float delta) {
-	        if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+	       pacman.move(Pacman.DIRECTION_STILL);
+		   if(Gdx.input.isKeyPressed(Keys.LEFT)) {
 	            pacman.move(Pacman.DIRECTION_LEFT);
 	        }
 	        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
@@ -35,8 +36,8 @@ public class GameScreen extends ScreenAdapter {
 	        } 
 	        if(Gdx.input.isKeyPressed(Keys.DOWN)) {
 	        	  pacman.move(Pacman.DIRECTION_DOWN);
-	        } 
-	    }
+	        }
+	   }
 	    
 	   public void render(float delta) {
 	        Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -44,4 +45,5 @@ public class GameScreen extends ScreenAdapter {
 	        update(delta);
 	        worldRenderer.render(delta);
 	    }
+	   
 }
