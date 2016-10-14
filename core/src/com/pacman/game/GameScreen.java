@@ -24,6 +24,17 @@ public class GameScreen extends ScreenAdapter {
 	    }
 	 
 	   public void update(float delta) {
+		   updatePacmanDirection();
+	        world.update(delta);
+	   }
+	    
+	   public void render(float delta) {
+	        Gdx.gl.glClearColor(0, 0, 0, 1);
+	        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	        update(delta);
+	        worldRenderer.render(delta);
+	    }
+	   private void updatePacmanDirection() {	
 		   Pacman pacman = world.getPacman();
 		   pacman.setNextDirection(Pacman.DIRECTION_STILL);
 		   if(Gdx.input.isKeyPressed(Keys.LEFT)) {
@@ -38,14 +49,5 @@ public class GameScreen extends ScreenAdapter {
 	        if(Gdx.input.isKeyPressed(Keys.DOWN)) {
 	        	  pacman.setNextDirection(Pacman.DIRECTION_DOWN);
 	        }
-	        world.update(delta);
 	   }
-	    
-	   public void render(float delta) {
-	        Gdx.gl.glClearColor(0, 0, 0, 1);
-	        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-	        update(delta);
-	        worldRenderer.render(delta);
-	    }
-	   
 }
